@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Registration</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      function showSection(section) {
+        document.getElementById("login-section").style.display =
+          section === "login" ? "block" : "none";
+        document.getElementById("registration-section").style.display =
+          section === "register" ? "block" : "none";
+      }
+
+      function showRegistration(type) {
+        document.getElementById("doctor-form").style.display =
+          type === "doctor" ? "block" : "none";
+        document.getElementById("patient-form").style.display =
+          type === "patient" ? "block" : "none";
+      }
+    </script>
+  </head>
+  <body class="container mt-4">
+    <div class="text-center mb-4">
+      <button class="btn btn-success" onclick="showSection('login')">
+        Login
+      </button>
+      <button class="btn btn-primary" onclick="showSection('register')">
+        Register
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-section" class="p-4 border rounded bg-light">
+      <h2 class="text-center">Login</h2>
+      <form action="/signin" method="post">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          class="form-control mb-3"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          class="form-control mb-3"
+          required
+        />
+        <select name="role" class="form-control">
+          <option>Select User</option>
+          <option>Doctor</option>
+          <option>Patient</option>
+        </select>
+        <button type="submit" class="btn btn-success w-100">Login</button>
+      </form>
+    </div>
+
+    <!-- Registration Section -->
+    <div
+      id="registration-section"
+      class="p-4 border rounded bg-light"
+      style="display: none"
+    >
+      <h2 class="text-center">Registration</h2>
+      <div class="text-center mb-3">
+        <button class="btn btn-info" onclick="showRegistration('doctor')">
+          Doctor Registration
+        </button>
+        <button class="btn btn-warning" onclick="showRegistration('patient')">
+          Patient Registration
+        </button>
+      </div>
+
+      <!-- Doctor Registration Form -->
+      <div id="doctor-form" style="display: none">
+        <h3 class="text-center">Doctor Registration</h3>
+        <form action="/register/doctor" method="post">
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Last Name"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="text"
+            name="specialization"
+            placeholder="Specialization"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="text"
+            name="license_number"
+            placeholder="License Number"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="tel"
+            name="contact_number"
+            placeholder="Contact Number"
+            class="form-control mb-3"
+            required
+          />
+          <textarea
+            name="office_address"
+            placeholder="Office Address"
+            class="form-control mb-3"
+            required
+          ></textarea>
+          <input
+            type="number"
+            name="years_experience"
+            placeholder="Years of Experience"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="number"
+            name="consultation_fee"
+            placeholder="Consultation Fee"
+            class="form-control mb-3"
+            required
+          />
+          <button type="submit" class="btn btn-info w-100">
+            Register as Doctor
+          </button>
+        </form>
+      </div>
+
+      <!-- Patient Registration Form -->
+      <div id="patient-form" style="display: none">
+        <h3 class="text-center">Patient Registration</h3>
+        <form action="/register/patient" method="post">
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Last Name"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="form-control mb-3"
+            required
+          />
+          <input type="date" name="dob" class="form-control mb-3" required />
+          <select name="blood_group" class="form-control mb-3" required>
+            <option value="">Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+          <input
+            type="tel"
+            name="contact_number"
+            placeholder="Contact Number"
+            class="form-control mb-3"
+            required
+          />
+          <textarea
+            name="address"
+            placeholder="Address"
+            class="form-control mb-3"
+            required
+          ></textarea>
+          <input
+            type="text"
+            name="emergency_name"
+            placeholder="Emergency Contact Name"
+            class="form-control mb-3"
+            required
+          />
+          <input
+            type="tel"
+            name="emergency_contact"
+            placeholder="Emergency Contact Number"
+            class="form-control mb-3"
+            required
+          />
+          <button type="submit" class="btn btn-warning w-100">
+            Register as Patient
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
